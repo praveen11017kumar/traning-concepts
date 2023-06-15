@@ -1,0 +1,23 @@
+<div class="container">
+    <legend>Login</legend>
+    <form class="align-self-center" #loginForm="ngForm">
+        <div class="mb-3 col-4">
+          <label for="username" class="form-label">Email address</label> {{loginData.username}}
+          <input type="text" name="username" class="form-control" id="login_username" [(ngModel)]="loginData.username" aria-describedby="emailHelp">
+          <div *ngIf="submitted && !loginData.username" class="error-message">
+            Please enter username
+          </div>
+        </div>
+        <div class="mb-3 col-4">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" id="login_password" [(ngModel)]="loginData.password">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="rememberme" class="form-check-input" id="login_remember" [(ngModel)]="loginData.rememberMe">
+          <label class="form-check-label"  for="exampleCheck1">Remenber me</label>
+        </div>
+        <button id="login_submit" class="btn btn-primary" (click)="onSubmit(loginForm)" >Submit</button>&nbsp;
+        <button id="login_signupBtn" class="btn btn-info" (click)="navigateToSignup()">Signup</button>
+    </form>
+</div>
+
