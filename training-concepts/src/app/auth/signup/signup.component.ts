@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ConfirmPasswordValidator } from 'src/app/shared/validators/custom-validators';
 
 @Component({
   selector: 'app-signup',
@@ -8,17 +9,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SignupComponent {
 
-  signUpForm = new FormGroup({
-    firstName: new FormControl('suhas', [Validators.required,Validators.minLength(5)]),
-    lastName: new FormControl('vamsi',[Validators.required,Validators.minLength(5)]),
-    email: new FormControl('akhil',[Validators.required,Validators.minLength(5)]),
-    password: new FormControl('',[Validators.required,Validators.minLength(5)])
-  });
+  signUpForm:any;
+  submitted = false;
 
+  constructor(private formBuilder: FormBuilder){}
 
-  constructor(){}
+  ngOnInit(){
+    this.signUpForm = this.formBuilder.group({
+        firstName: ['',[Validators.required,Validators.minLength(8)]],
+        lastName: ['',[Validators.required,Validators.minLength(10)]],
+        email: ['', [Validators.required,Validators.email]],
+        password: ['', [Validators.required,Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/)]],
+        confirmPassword: ['', [Validators.required]]
+      },{
+        Validators: ConfirmPasswordValidator('password','confirmPassword')
+      });
+  }
 
   onSubmit():void{
+    this.submitted = true;
     if(this.signUpForm.valid){
       alert("form submitted")
     }
