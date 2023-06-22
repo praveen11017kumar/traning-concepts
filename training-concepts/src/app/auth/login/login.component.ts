@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -8,38 +9,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  sampleTest ="das";
   @ViewChild('loginForm') loginForm: NgForm | undefined;
- 
-  loginData:any;
+  loginData: any;
   submitted = false;
-  preview: string = '';
+  error_message ='';
   jobForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
   });
- 
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private storageService: StorageService) { }
 
   ngOnInit() {
-    this.loginData = { 
-      username: '',
-      password: '',
+    this.loginData = {
+      email: 'vamsi@gmail.com',
+      password: 'A123a@123',
       rememberMe: true
     };
- 
   }
 
-  navigateToSignup(){
+  navigateToSignup() {
     this.router.navigate(['auth/signup']);
   }
 
-  onSubmit(loginForm:any) {
-    this.submitted =true;
+  onSubmit(loginForm: any) {
+    this.submitted = true;
+    let userDetailsList = [];
     console.log(loginForm);
-    if(this.loginData.username && this.loginData.password){
-      this.router.navigate(['dashboard/prerequite-jscript']);
+    if (this.loginData.email && this.loginData.password) {
+      let userDataInStr = this.storageService.getLocalStorageData('register');
+      if (userDataInStr) {
+        userDetailsList = JSON.parse(atob(userDataInStr));
+        let isExists = userDetailsList.findIndex((rec: any) =>  rec.email === this.loginData.email && rec.password === this.loginData.password )
+        if (isExists != -1) {
+          this.router.navigate(['dashboard/prerequite-jscript']);
+        }else{
+          this.error_message = "Invalid credentials."
+        }
+      }
     }
   }
 }

@@ -46,12 +46,16 @@
         <div class="mb-3 col-4">
           <label for="confirmpassword" class="form-label">Confirm Password</label>
           <input type="text" name="confirmpassword" class="form-control" formControlName="confirmPassword" id="login_password">
-          <div *ngIf="submitted && signUpForm.controls.confirmPassword?.errors?.['required']">
+          <div *ngIf=" signUpForm.controls.confirmPassword?.errors?.['required']">
             <span class="error-msg">Confirm Password is required.</span>
           </div>
-          <div *ngIf="submitted && signUpForm.controls.confirmPassword?.errors?.['confirmPasswordValidator']">
+          <div *ngIf=" signUpForm.controls.confirmPassword?.errors?.['confirmPasswordValidator']">
             <span class="error-msg">Password should contain upper&lower character, special character, number.</span>
           </div>
+        </div>
+
+        <div *ngIf="submitted && error_message">
+          <span class="error-msg">Email already exists.</span>
         </div>
         <button id="login_submit" class="btn btn-primary" (click)="onSubmit()">Save</button>&nbsp;
         <button id="login_submit" class="btn btn-info" (click)="onReset()">Reset</button>
