@@ -1,0 +1,19 @@
+<table class="table table-striped table-hover" *ngIf="userList.length">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>UserName</th>
+            <th>Salary</th>
+            <th>Age</th>
+            <!-- <th>Actions</th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList">
+            <td>{{user?.id}}</td>
+            <td>{{user?.employee_name}}</td>
+            <td>{{user?.employee_salary}}</td>
+            <td>{{user?.employee_age}}</td>
+        </tr>
+    </tbody>
+</table>

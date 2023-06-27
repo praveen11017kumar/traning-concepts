@@ -16,6 +16,10 @@ const routes: Routes = [
         path: 'prerequite-jscript', 
         loadChildren: () => import('./prerequisites/prerequisites.module').then(m => m.PrerequisitesModule) 
       },
+      { 
+        path: 'users', 
+        loadChildren: () => import('./user-management/user-management.module').then(m => m.UserManagementModule) 
+      },
     ]
   }
 ];
