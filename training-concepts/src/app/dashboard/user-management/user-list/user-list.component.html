@@ -1,19 +1,47 @@
-<table class="table table-striped table-hover" *ngIf="userList.length">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>UserName</th>
-            <th>Salary</th>
-            <th>Age</th>
-            <!-- <th>Actions</th> -->
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of userList">
-            <td>{{user?.id}}</td>
-            <td>{{user?.employee_name}}</td>
-            <td>{{user?.employee_salary}}</td>
-            <td>{{user?.employee_age}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="row mr-0">
+    <div class="col-8">
+        <table class="table table-success table-striped" *ngIf="userList.length">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>UserName</th>
+                    <th>Salary</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userList">
+                    <td>{{user?.id}}</td>
+                    <td>{{user?.employee_name}}</td>
+                    <td>{{user?.employee_salary}}</td>
+                    <td>{{user?.employee_age}}</td>
+                    <td>
+                        <button class="btn btn-primary" (click)="onEditClick(user)">Edit</button> &nbsp;
+                        <button class="btn btn-secondary">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4" *ngIf="showUserDetailsForm">
+        <legend>User Details</legend>
+        <form [formGroup]="userInfoForm" class="align-self-center" >
+            <div class="mb-3 col-12">
+                <label for="username" class="form-label">User Name</label> 
+                <input type="text" name="username" formControlName="username" class="form-control" id="user_username" >
+            </div>
+            <div class="mb-3 col-12">
+                <label class="form-label">Salary</label>
+                <input type="number" name="salary" class="form-control" formControlName="salary" id="user_salary">
+            </div>
+            <div class="mb-3 col-12">
+                <label class="form-label">Age </label>
+                <input type="number" name="age" class="form-control" formControlName="age" id="user_age">
+            </div>
+            <button id="login_submit" class="btn btn-primary" (click)="onSubmit()">Save</button>&nbsp;
+            <button id="login_submit" class="btn btn-info" (click)="onReset()">Reset</button>
+        </form> 
+    </div>
+    
+</div>

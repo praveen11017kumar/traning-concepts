@@ -14,4 +14,12 @@ export class UsersService {
    return this.http.get(this.baseUrl+'/employees');
   }
 
+  getUserById(id:any):Observable<any>{
+   return this.http.get(`${this.baseUrl}/employee/${id}`);
+  }
+
+  updateUser(userDetails:any, id:string){
+      return this.http.put(`${this.baseUrl}/update/${id}`,userDetails)
+  }
+
 }
