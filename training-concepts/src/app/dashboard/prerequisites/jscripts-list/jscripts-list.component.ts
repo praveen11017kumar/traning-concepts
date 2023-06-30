@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-jscripts-list',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class JscriptsListComponent {
 
+  location:any;
+  constructor(private storageService: StorageService){
+
+  }
+
+  ngOnInit(){
+    this.storageService.userLocation$.subscribe((res)=>{
+      console.log(res);
+      this.location = res;
+    });
+  }
 }

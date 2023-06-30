@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../services/users.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-user-list',
@@ -12,8 +13,11 @@ export class UserListComponent {
   userInfoForm:any;
   showUserDetailsForm = false;
   userId:any;
+  userLocation:string | undefined;
   
-  constructor(private usersService: UsersService,private formBuilder: FormBuilder){ }
+  constructor(private usersService: UsersService,
+    private formBuilder: FormBuilder,
+    private storageService: StorageService){ }
   
   userList=[{
     id:'',
@@ -29,6 +33,11 @@ export class UserListComponent {
       salary: ['',[Validators.required,Validators.minLength(10)]],
       age: ['', [Validators.required,Validators.email]],
     });
+
+    this.storageService.userLocation$.subscribe((res)=>{
+      this.userLocation = res;
+    });
+    
     this.getUserList();
   }
 

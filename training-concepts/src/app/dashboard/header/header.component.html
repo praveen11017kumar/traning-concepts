@@ -25,6 +25,11 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
+          <select (ngModelChange)="selectChange($event)" [ngModelOptions]="{standalone: true}"  class="form-select" aria-label="Select Location" [(ngModel)]="location">
+            <option *ngFor="let loc of locationList" >
+              {{loc}}
+          </option>
+          </select>
           <button class="btn btn-outline-danger">Logout</button>
         </form>
       </div>
