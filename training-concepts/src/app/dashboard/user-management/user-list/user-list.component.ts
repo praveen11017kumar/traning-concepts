@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UsersService } from '../services/users.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-user-list',
@@ -35,9 +35,7 @@ export class UserListComponent {
   getUserList(){
     this.usersService.getUsersList().subscribe(res =>{
       console.log(res);
-      this.userList = res.data;
-    },(err)=>{
-      alert(err.error.message);
+      this.userList = res?.data;
     });
   }
 
@@ -50,7 +48,7 @@ export class UserListComponent {
    },(err:any)=>{
       console.log(err);
       this.patchValuesToForm(user);
-      alert(err.error.message);
+      
    })
   }
 
@@ -76,7 +74,7 @@ export class UserListComponent {
       this.getUserList();
       this.showUserDetailsForm = false;
       this.userId = '';
-      alert(err.error.message);
+      alert(err);
     })
   }
 
