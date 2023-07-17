@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard-component';
+import { InterviewQuesComponent } from './interview-ques/interview-ques.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
         path: 'users', 
         loadChildren: () => import('./user-management/user-management.module').then(m => m.UserManagementModule) 
       },
+      {
+        path:'interview-ques', component: InterviewQuesComponent
+      }
     ]
   }
 ];

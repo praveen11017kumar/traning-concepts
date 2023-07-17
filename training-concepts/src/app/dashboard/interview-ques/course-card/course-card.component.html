@@ -1,0 +1,13 @@
+<div class="flex-container">
+  <div *ngFor="let course of coursesInfo">
+    <div class="card" style="width: 18rem;">
+      <img [src]="course.courseImage" height="200" >
+      <div class="card-body">
+        <h5 class="card-title"> {{course.title}}</h5>
+        <p class="card-text"> {{course.description}}</p>
+        <a [href]="course.cheatSheetLink" target="_blank" class="btn btn-secondary" style="float: left;">Cheat Sheet</a>
+        <a [href]="course.link" target="_blank" class="btn btn-info" style="float: right;">More Info</a>
+      </div>
+    </div>
+  </div>
+</div>
