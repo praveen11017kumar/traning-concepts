@@ -1,6 +1,7 @@
 <div class=" container-fluid">
     location -{{userLocation}}
     Date: {{currDate |  date: 'dd/MM/yyyy'}}
+    <p appHighlighter>Sample text </p>
     <div  class="row">
         <div class="col-8">
             <table class="table table-success table-striped" *ngIf="(userList | async)?.data?.length">
@@ -29,7 +30,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-4" *ngIf="true">
+        <div class="col-4" *ngIf="showUserDetailsForm">
             <legend>User Details</legend>
             <form [formGroup]="userInfoForm" class="align-self-center" >
                 <div class="mb-3 col-12">
