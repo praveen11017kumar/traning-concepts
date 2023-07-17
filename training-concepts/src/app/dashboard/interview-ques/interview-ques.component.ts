@@ -37,7 +37,7 @@ export class InterviewQuesComponent {
     },
     {
       title: 'Bootstrap',
-      description: 'Bootstrap is a free and open-source collection of CSS and JavaScript/jQuery code used for creating dynamic websites layout and web applications.',
+      description: 'Bootstrap is a free, one of the most popular front-end frameworks and open-source collection of CSS and JavaScript/jQuery code used for creating dynamic websites layout and web applications',
       courseImage: '../../../../assets/images/bootstrap.jpg',
       link:'https://www.interviewbit.com/bootstrap-interview-questions/',
       cheatSheetLink: 'https://hackerthemes.com/bootstrap-cheatsheet/#form-control-lg'
