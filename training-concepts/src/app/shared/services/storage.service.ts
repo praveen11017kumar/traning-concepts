@@ -5,7 +5,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class StorageService {
-
+  isLoggedIn = false;
   userLocation$ = new BehaviorSubject('India');
 
   constructor() { }

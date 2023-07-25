@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ICourseInfo } from './models/common.model';
 
 @Component({
   selector: 'app-interview-ques',
@@ -6,13 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./interview-ques.component.scss']
 })
 export class InterviewQuesComponent {
-  coursesInfo = [
+  
+  coursesInfo: ICourseInfo[] = [
     {
       title: 'Angular',
       description: 'Angular is a component-based framework.A collection of well-integrated libraries that cover a wide variety of features, including routing, forms management, client-server communication, and more.',
       courseImage: '../../../../assets/images/ang.png',
       link:'https://github.com/sudheerj/angular-interview-questions',
-      cheatSheetLink: 'https://hackr.io/blog/angular-cheat-sheet'
+      cheatSheetLink: 'https://hackr.io/blog/angular-cheat-sheet',
     },
     {
       title: 'Javascript',
@@ -41,6 +43,20 @@ export class InterviewQuesComponent {
       courseImage: '../../../../assets/images/bootstrap.jpg',
       link:'https://www.interviewbit.com/bootstrap-interview-questions/',
       cheatSheetLink: 'https://hackerthemes.com/bootstrap-cheatsheet/#form-control-lg'
-    }
-  ]
+    },
+    {
+      title: 'Angular',
+      description: 'Angular is a component-based framework.A collection of well-integrated libraries that cover a wide variety of features, including routing, forms management, client-server communication, and more.',
+      courseImage: '../../../../assets/images/ang.png',
+      link:'https://github.com/sudheerj/angular-interview-questions',
+      cheatSheetLink: 'https://hackr.io/blog/angular-cheat-sheet'
+    },
+    {
+      title: 'Javascript',
+      description: 'JavaScript (JS) is a lightweight interpreted (or just-in-time compiled) programming language with first-class functions. While it is most well-known as the scripting language for Web pages.',
+      courseImage: '../../../../assets/images/java-script.jpg',
+      link:'https://github.com/sudheerj/javascript-interview-questions',
+      cheatSheetLink: 'https://quickref.me/javascript.html'
+    },
+  ];
 }
