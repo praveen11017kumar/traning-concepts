@@ -43,7 +43,11 @@ export class LoginComponent {
         let isExists = userDetailsList.findIndex((rec: any) =>  rec.email === this.loginData.email && rec.password === this.loginData.password )
         if (isExists != -1) {
           this.storageService.isLoggedIn = true;
-          this.router.navigate(['dashboard/prerequite-jscript']);
+          if(this.storageService.reDirectPath){
+            this.router.navigate([this.storageService.reDirectPath]);
+          }else{
+            this.router.navigate(['dashboard/prerequite-jscript']);
+          }
         }else{
           this.storageService.isLoggedIn = false;
           this.error_message = "Invalid credentials."

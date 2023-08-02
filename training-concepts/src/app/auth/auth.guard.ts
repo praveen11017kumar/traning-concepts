@@ -13,9 +13,11 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(this.storageService.isLoggedIn){
+        this.storageService.reDirectPath ='';
         return true;
       }else{
-        this.router.navigate(['/auth/login'])
+        this.storageService.reDirectPath = document.location.pathname;
+        this.router.navigate(['/auth/login']);
         return false;
       }
 
