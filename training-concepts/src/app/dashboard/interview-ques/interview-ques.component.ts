@@ -55,7 +55,9 @@ export class InterviewQuesComponent {
   constructor(private activatedRoute: ActivatedRoute){}
   ngOnInit(){
     this.activatedRoute.queryParams.subscribe((res)=>{
-      this.coursesInfo = this.coursesInfo.filter(rec => rec.id === res['id'])
+      if(res['id']){
+        this.coursesInfo = this.coursesInfo.filter(rec => rec.id === res['id'])
+      }
     })
   }
 }

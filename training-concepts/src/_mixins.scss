@@ -1,0 +1,16 @@
+@import '_variables';
+
+
+@mixin important-text {
+    color: $color-text;
+    font-size: 125px;
+    font-weight: bold;
+    border: 1px solid $color-link;
+}
+
+@mixin heading-block{
+    color: $color-paragraph;
+    font-size: $font-x20;
+    border: 2px solid $color-paragraph;
+    border-radius: 3px;
+}

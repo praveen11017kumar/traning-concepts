@@ -42,14 +42,14 @@ export class LoginComponent {
         userDetailsList = JSON.parse(atob(userDataInStr));
         let isExists = userDetailsList.findIndex((rec: any) =>  rec.email === this.loginData.email && rec.password === this.loginData.password )
         if (isExists != -1) {
-          this.storageService.isLoggedIn = true;
+          this.storageService.setLocalStorageData('isLoggedIn', true);
           if(this.storageService.reDirectPath){
             this.router.navigate([this.storageService.reDirectPath]);
           }else{
             this.router.navigate(['dashboard/prerequite-jscript']);
           }
         }else{
-          this.storageService.isLoggedIn = false;
+          this.storageService.setLocalStorageData('isLoggedIn', false);
           this.error_message = "Invalid credentials."
         }
       }

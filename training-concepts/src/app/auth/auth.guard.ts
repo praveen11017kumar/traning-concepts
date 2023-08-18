@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(this.storageService.isLoggedIn){
+      if(this.storageService.getLocalStorageData('isLoggedIn')){
         this.storageService.reDirectPath ='';
         return true;
       }else{
